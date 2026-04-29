@@ -87,8 +87,8 @@ def add_flight():
     data = request.json or {}
     save_flight(data)
     if data.get("emergency"):
-        save_emergency({"flight_id": data.get("flight_id"), "emergency_type": "Declared emergency", "severity": "HIGH"})
-    save_log("FLIGHT_ADDED", f"Flight {data.get('flight_id')} registered in active queue.")
+        save_emergency({"flight_id": data.get("flight_id", data.get("id")), "emergency_type": "Declared emergency", "severity": "HIGH"})
+    save_log("FLIGHT_ADDED", f"Flight {data.get('flight_id', data.get('id'))} registered in active queue.")
     return jsonify({"status": "success"})
 
 @app.route("/api/predictions", methods=["POST"])

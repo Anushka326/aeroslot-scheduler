@@ -1,12 +1,18 @@
 import os
-import sqlite3
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "aeroslot.sqlite3")
+import mysql.connector
+
+MYSQL_CONFIG = {
+    "host": os.getenv("MYSQL_HOST", "localhost"),
+    "port": int(os.getenv("MYSQL_PORT", "3306")),
+    "user": os.getenv("MYSQL_USER", "root"),
+    "password": os.getenv("MYSQL_PASSWORD", "anushka"),
+    "database": os.getenv("MYSQL_DATABASE", "airport_scheduler"),
+}
 
 def get_connection():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
+    return mysql.connector.connect(**MYSQL_CONFIG)
 
 def dict_rows(cursor):
-    return [dict(row) for row in cursor.fetchall()]
+    columns = [col[0] for col in cursor.description]
+    return [dict(zip(columns, row)) for row in cursor.fetchall()]
