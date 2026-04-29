@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node / frontend
+node_modules/
+dist/
+*.log
+
+# C/C++ build outputs
+build/
+build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.o
+*.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+
+# Local environment and runtime state
+.env
+*.sqlite
+*.sqlite3
+*.db
+
+# Large/generated data and model artifacts
+*.csv
+*.parquet
+*.pkl
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/

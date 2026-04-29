@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-slate-800 font-sans antialiased overflow-hidden overflow-y-auto selection:bg-sky-500/20;
+    /* Soft Aviation Background */
+    background: url('/aeroslot_bg.png') center/cover no-repeat fixed;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Elegant Aviation Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Enhanced Glassmorphism for AeroSlot */
+.glass-card {
+  @apply bg-white/40 backdrop-blur-3xl border border-white/60 shadow-sm rounded-[2.5rem] transition-all duration-500 overflow-hidden;
+}
+
+.glass-card:hover {
+  @apply shadow-2xl -translate-y-1 bg-white/50;
+  box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.05);
+}
+
+/* Rebranded AeroSlot Colors */
+.aeroslot-bg {
+  @apply bg-white/40 backdrop-blur-2xl border border-white/60;
+}
+
+/* Logo Motion (Subtle Glide) */
+@keyframes glide {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-5px) translateX(2px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+.animate-glide {
+  animation: glide 6s ease-in-out infinite;
+}
+
+/* Radar Sweep Animation */
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-radar {
+  animation: radar-sweep 4s linear infinite;
+  transform-origin: center;
+}
+
+/* Smooth Navigation Active State */
+.nav-active {
+  @apply bg-white/80 text-sky-600 shadow-lg border border-white scale-105;
+}
+
+/* Dotted Flight Path */
+@keyframes flight-dash {
+  to { stroke-dashoffset: -40; }
+}
+
+.flight-path {
+  stroke-dasharray: 8, 8;
+  animation: flight-dash 2s linear infinite;
+}
+
+@keyframes runway-flyby {
+  0% {
+    left: 1rem;
+    transform: translateY(0) rotate(8deg);
+    opacity: 0.25;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-7px) rotate(8deg);
+  }
+  100% {
+    left: calc(100% - 3rem);
+    transform: translateY(0) rotate(8deg);
+    opacity: 0.25;
+  }
+}
+
+.runway-flyby {
+  animation: runway-flyby 7s ease-in-out infinite;
+}
+
+@keyframes runway-card-plane {
+  0%, 100% {
+    transform: translateX(0) translateY(0) rotate(8deg);
+  }
+  50% {
+    transform: translateX(-18px) translateY(8px) rotate(8deg);
+  }
+}
+
+.runway-card-plane {
+  animation: runway-card-plane 3.8s ease-in-out infinite;
+}
+
+@keyframes algorithm-plane {
+  0%, 100% {
+    transform: translateX(-12px) rotate(8deg);
+  }
+  50% {
+    transform: translateX(12px) rotate(8deg);
+  }
+}
+
+.algorithm-plane {
+  animation: algorithm-plane 2.4s ease-in-out infinite;
+}
+
+@keyframes runway-takeoff {
+  0% {
+    transform: translateX(-26px) translateY(16px) rotate(8deg);
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(6px) translateY(-4px) rotate(8deg);
+    opacity: 1;
+  }
+}
+
+.runway-takeoff {
+  animation: runway-takeoff 1.2s ease-out;
+}
+
+@keyframes runway-switch-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(14, 165, 233, 0);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(14, 165, 233, 0.22);
+  }
+}
+
+.runway-switch-pulse {
+  animation: runway-switch-pulse 1.4s ease-in-out 3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

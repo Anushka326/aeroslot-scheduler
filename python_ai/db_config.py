@@ -1,0 +1,12 @@
+import os
+import sqlite3
+
+DB_PATH = os.path.join(os.path.dirname(__file__), "aeroslot.sqlite3")
+
+def get_connection():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def dict_rows(cursor):
+    return [dict(row) for row in cursor.fetchall()]
