@@ -19,6 +19,20 @@ import pandas as pd
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({
+        "status": "online",
+        "service": "AeroSlot AI API Server",
+        "endpoints": [
+            "/api/predict",
+            "/api/flights",
+            "/api/history",
+            "/api/archive",
+            "/api/schedule"
+        ]
+    })
+
 MODEL_DIR = os.path.join(os.path.dirname(__file__), "models")
 try:
     delay_model = joblib.load(os.path.join(MODEL_DIR, "rf_delay_model.pkl"))
