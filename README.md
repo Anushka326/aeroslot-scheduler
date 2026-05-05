@@ -80,6 +80,21 @@ The project follows a microservices-style architecture:
 - **Tech Stack**: MySQL
 - **Role**: Persistence for Tactical Audit Logs and Schedule History.
 
+### 🔄 System Workflow Diagram
+
+```mermaid
+graph TD
+    A[React Frontend Dashboard] -->|Flight Submission| B(Python Flask API Server)
+    B -->|Query Features| C[Machine Learning Inference Layer]
+    C -->|Delay & Risk Predictions| B
+    B -->|JSON Flight Data| D{C++ Scheduling Engine}
+    D -->|Conflict Graph Validation| E[Safety & Separation Check]
+    D -->|Priority Queue / Heaps| F[Optimal Runway Allocation]
+    F -->|Scheduled Slot Times| B
+    B -->|Telemetry & Tactical Audit| G[(MySQL Database)]
+    B -->|Real-Time State Update| A
+```
+
 ---
 
 ## 📊 Datasets and Data Fusion Pipeline
@@ -92,9 +107,17 @@ The ML models are trained on a Merged Aviation Intelligence Dataset combined fro
 4. **Historical Flight Delay Datasets (FAA/BTS/Kaggle)**: Supervised learning dataset capturing historical delay patterns and causes.
 
 **Data Fusion Flow:**
-`OpenSky Trajectories + Aircraft Metadata + Amelia Surface Operations + Historical Delay Data` 
-➡️ `Merged Aviation Intelligence Dataset`
-➡️ `ML Models + C++ Scheduling Engine`
+
+```mermaid
+graph LR
+    A[OpenSky Trajectories] --> E(Data Fusion Pipeline)
+    B[OpenSky Aircraft Metadata] --> E
+    C[Amelia-48 Surface Ops] --> E
+    D[Historical Delay Data] --> E
+    E --> F[(Merged Aviation Intelligence Dataset)]
+    F --> G[ML Model Training & Evaluation]
+    G --> H[Python AI Inference Models]
+```
 
 ---
 
