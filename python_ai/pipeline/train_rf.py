@@ -1,5 +1,5 @@
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, root_mean_squared_error
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 import joblib
 import os
 
@@ -12,7 +12,7 @@ def train_delay_model(X_train, y_train, X_val, y_val, model_dir):
     
     preds = model.predict(X_val)
     mae = mean_absolute_error(y_val, preds)
-    rmse = root_mean_squared_error(y_val, preds)
+    rmse = mean_squared_error(y_val, preds) ** 0.5
     
     print(f" -> [RF Validation Results] MAE: {mae:.2f} | RMSE: {rmse:.2f}")
     

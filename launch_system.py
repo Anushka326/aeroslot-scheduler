@@ -19,7 +19,11 @@ def launch_all():
         # 2. Start C++ Scheduler
         # Hardcoding the expected Windows execution path for the prototype natively securely
         print("[Orchestrator] Starting C++ Scheduler Engine...")
-        cpp_proc = subprocess.Popen(["./Debug/airport_scheduler.exe"], cwd="d:/ITR/AIRPORT/cpp_scheduler/build")
+        import os
+        exe_path = "d:/ITR/AIRPORT/cpp_scheduler/build/airport_scheduler.exe"
+        if not os.path.exists(exe_path):
+            exe_path = "d:/ITR/AIRPORT/cpp_scheduler/build/Debug/airport_scheduler.exe"
+        cpp_proc = subprocess.Popen([exe_path], cwd="d:/ITR/AIRPORT/cpp_scheduler/build")
         processes.append(("C++ Engine", cpp_proc))
         time.sleep(2)
         
